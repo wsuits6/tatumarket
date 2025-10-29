@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuuli Importations - Quality Products from China to Ghana</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/srtyles/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> +233 XX XXX XXXX</span>
+                <span><i class="fas fa-envelope"></i> info@tuuliimportations.com</span>
+            </div>
+            <div class="top-bar-right">
+                <span><i class="fas fa-truck"></i> Free Shipping on Orders Over GH₵500</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-wind"></i> TUULI
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for products...">
+                <button onclick="searchProducts()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="header-actions">
+                <div class="header-icon" onclick="toggleWishlist()">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge" id="wishlistCount">0</span>
+                </div>
+                <div class="header-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </div>
+                <div class="header-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#features">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Tuuli Importations</h1>
+            <p>Your trusted partner for quality products from China to Ghana. Browse our extensive collection of electronics, fashion, home goods, and more!</p>
+            <a href="#products" class="cta-button">Shop Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section" id="categories">
+        <h2 class="section-title">Browse by Category</h2>
+        <div class="categories-grid">
+            <div class="category-card" onclick="filterByCategory('Electronics')">
+                <div class="category-icon"><i class="fas fa-laptop"></i></div>
+                <h3>Electronics</h3>
+                <p>Latest gadgets & tech</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('Fashion')">
+                <div class="category-icon"><i class="fas fa-tshirt"></i></div>
+                <h3>Fashion</h3>
+                <p>Clothing & accessories</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('Home')">
+                <div class="category-icon"><i class="fas fa-home"></i></div>
+                <h3>Home & Living</h3>
+                <p>Furniture & decor</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('Beauty')">
+                <div class="category-icon"><i class="fas fa-spa"></i></div>
+                <h3>Beauty</h3>
+                <p>Cosmetics & skincare</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('Sports')">
+                <div class="category-icon"><i class="fas fa-basketball-ball"></i></div>
+                <h3>Sports</h3>
+                <p>Fitness & outdoor</p>
+            </div>
+            <div class="category-card" onclick="filterByCategory('Toys')">
+                <div class="category-icon"><i class="fas fa-gamepad"></i></div>
+                <h3>Toys & Games</h3>
+                <p>Fun for all ages</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <h2 class="section-title">Featured Products</h2>
+        
+        <div class="filter-bar">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterByCategory('All')">All Products</button>
+                <button class="filter-btn" onclick="filterByCategory('Electronics')">Electronics</button>
+                <button class="filter-btn" onclick="filterByCategory('Fashion')">Fashion</button>
+                <button class="filter-btn" onclick="filterByCategory('Home')">Home</button>
+                <button class="filter-btn" onclick="filterByCategory('Beauty')">Beauty</button>
+            </div>
+            <select class="sort-dropdown" onchange="sortProducts(this.value)">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+            </select>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <h2 class="section-title" style="color: white;">Why Choose Tuuli Importations?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Quality Guaranteed</h3>
+                <p>All products are carefully selected and quality-checked before shipping</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+                <h3>Fast Delivery</h3>
+                <p>Quick and reliable delivery across Ghana within 3-7 business days</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+                <h3>Best Prices</h3>
+                <p>Competitive prices with regular discounts and special offers</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                <h3>24/7 Support</h3>
+                <p>Our customer service team is always ready to help you</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart (<span id="cartItemCount">0</span>)</h2>
+            <button class="cart-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Your cart is empty</h3>
+                <p>Start adding some products!</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span>GH₵<span id="cartTotal">0</span></span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">
+                Proceed to Checkout <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Tuuli</h3>
+                <p>Tuuli Importations is your trusted partner for quality products from China. We bring you the best deals on electronics, fashion, home goods, and more, delivered right to your doorstep in Ghana.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#features">About Us</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping Information</a></li>
+                    <li><a href="#">Payment Methods</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Accra, Ghana</li>
+                    <li><i class="fas fa-phone"></i> +233 XX XXX XXXX</li>
+                    <li><i class="fas fa-envelope"></i> info@tuuliimportations.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Sat: 8AM - 8PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Tuuli Importations. All rights reserved. Bringing quality products from China to Ghana.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/scripts/script.js"> </script>
+</body>
+</html>
